@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: mytomcat
+  labels:
+    author: naveen
+    type: web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      author: naveen
+      type: web
+  template:
+    metadata:
+      name: mytomcat
+      labels:
+        author: naveen
+        type: web
+    spec:
+      containers:
+        - name: mytomcat
+          image: tomee
+          ports:
+            - containerPort: 8080
+              hostPort: 8888
+...

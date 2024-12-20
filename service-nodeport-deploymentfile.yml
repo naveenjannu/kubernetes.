@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myjenkins
+  labels:
+    author: naveen
+    type: ci-cd
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      author: naveen
+      type: ci-cd
+  template:
+    metadata:
+      name: myjenkins
+      labels:
+        author: naveen
+        type: ci-cd
+    spec:
+      containers:
+        - name: myjenkins
+          image: jenkins/jenkins
+...

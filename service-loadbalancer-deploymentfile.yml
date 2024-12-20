@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapache
+  labels:
+    author: naveen
+    type: web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      author: naveen
+      type: web
+  template:
+    metadata:
+      name: myapache
+      labels:
+        author: naveen
+        type: web
+    spec:
+      containers:
+        - name: myapache
+          image: httpd
+...

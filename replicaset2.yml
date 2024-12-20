@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: mydatabase
+  labels:
+    author: naveen
+    type: database
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      author: naveen
+      type: mydb
+  template:
+    metadata:
+      name: mysql
+      labels:
+        author: naveen
+        type: mydb
+    spec:
+      containers:
+        - name: mysql
+          image: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: naveen
+            - name: MYSQL_ROOT__USERNAME
+              value: naveen
+            - name: MYSQL_ROOT_DB
+              value: mydb
+...

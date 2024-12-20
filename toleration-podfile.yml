@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mytomcat
+  labels:
+    author: naveen
+    type: web
+spec:
+  containers:
+    - name: mytomcat
+      image: tomee
+  tolerations:
+    - key: slave1
+      operator: Equal
+      value: naveen1
+      effect: NoSchedule
+...

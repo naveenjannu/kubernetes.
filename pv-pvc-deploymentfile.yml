@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynginx
+  labels:
+    author: naveen
+    type: web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      author: naveen
+  template:
+    metadata:
+      name: mynginx
+      labels:
+        author: naveen
+    spec:
+      containers:
+        - name: mynginx
+          image: nginx
+          volumeMounts:
+            - name: volume05
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: volume05
+          persistentVolumeClaim:
+            claimName: mypersistentvolumeclaim1
+...

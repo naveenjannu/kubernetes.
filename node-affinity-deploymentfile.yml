@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynginx
+  labels:
+    author: naveen
+    type: web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      author: naveen
+  template:
+    metadata:
+      name: mynginx
+      labels:
+        author: naveen
+    spec:
+      containers:
+        - name: mynginx
+          image: nginx
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                 - key: slave1
+                   operator: In
+                   values:
+                     - naveen1
+...

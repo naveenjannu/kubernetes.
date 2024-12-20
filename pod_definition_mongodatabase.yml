@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mymongo
+  labels:
+    author: naveen
+    type: database
+spec:
+ containers:
+  - name: mymongodb 
+    image: mongo
+    env:
+     - name: MONGO_INITDB_ROOT_USERNAME
+       value: naveen
+     - name: MONGO_INITDB_ROOT_PASSWORD
+       value: naveen
+...
+
